@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<script>
+			function loadCounter() {
+			
+				if(typeof(Storage) !== "undefined") {
+				if (localStorage.loadcount) {
+					localStorage.loadcount = Number(localStorage.loadcount)+1;
+				} else {
+					localStorage.loadcount = 1;
+				}
+				document.getElementById("result").innerHTML = "You have loaded the site " + localStorage.loadcount + " time(s).";
+				} else {
+				document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage...";
+				}
+			}
+		</script>
+	</head>
+	
+	<body onload="loadCounter()">
+	<h2>
+		<div id="result"></div>
+	</h2>
+	
+	<p>Reload to see the counter increase.</p>
+	
+	<p>Close the browser tab (or window), and try again, and the counter will continue to count (is not reset).</p>
+	
+	</body>
+</html>
