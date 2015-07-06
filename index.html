@@ -1,11 +1,168 @@
-<!doctype HTML>
+<!doctype html>
 
 <html>
-  <head>
-  
-  </head>
-  
-  <body>
-  
-  </body>
+	<head>
+		<link rel="shortcut icon" type="image/x-icon" href="http://icons.iconseeker.com/png/16/300/300-sword.png"/>
+		<title>Is it time?</title>
+		<style>
+			.fixed {
+				position: relative;
+				bottom: 50%;
+				right: 50%;
+				width: 200px;
+				border-style: solid;
+				border-width: 15px;
+				border-color:red green red pink;
+				background-color: blue;
+			}
+			.center {
+				border-width: 1px;
+				border-color: red;
+				margin-left: auto;
+				margin-right: auto;
+				width: 20%;
+
+				text-align: center;
+				background-color: #b0e0e6;
+			}
+			</style>
+			
+			<script>
+			function showFromLast() {
+				var d3 = new Date ();
+				d3.setHours (13);
+				d3.setMinutes(37);
+				d3.setSeconds(0);
+				
+				var _second = 1000;
+				var _minute = _second * 60;
+				var _hour = _minute * 60;
+				var _day = _hour * 24;
+			
+				var now = new Date();
+				var distance = now - d3;
+				if (now - d3 < 0) {
+					d3.setDate(d3.getDate() + -1)
+					distance = now-d3;
+
+				}
+				var days = Math.floor(distance / _day);
+				var hours = Math.floor((distance % _day) / _hour);
+				var minutes = Math.floor((distance % _hour) / _minute);
+				var seconds = Math.floor((distance % _minute) / _second);
+
+				document.getElementById('countup').innerHTML = "Time since last 13:37 : " + days + 'days ';
+				document.getElementById('countup').innerHTML += hours + 'hrs ';
+				document.getElementById('countup').innerHTML += minutes + 'mins ';
+				document.getElementById('countup').innerHTML += seconds + 'secs';
+			}
+			
+			function showRemaining() {
+				var d2 = new Date ();
+				d2.setHours (13);
+				d2.setMinutes(37);
+				d2.setSeconds(0);
+				
+				var _second = 1000;
+				var _minute = _second * 60;
+				var _hour = _minute * 60;
+				var _day = _hour * 24;
+			
+				var now = new Date();
+				var distance = d2 - now;
+				if (d2 - now < 0) {
+					d2.setDate(d2.getDate() + 1)
+					distance = d2-now;
+
+				}
+				var days = Math.floor(distance / _day);
+				var hours = Math.floor((distance % _day) / _hour);
+				var minutes = Math.floor((distance % _hour) / _minute);
+				var seconds = Math.floor((distance % _minute) / _second);
+
+				document.getElementById('countdown').innerHTML = "Time untill next 13:37 : " + days + 'days ';
+				document.getElementById('countdown').innerHTML += hours + 'hrs ';
+				document.getElementById('countdown').innerHTML += minutes + 'mins ';
+				document.getElementById('countdown').innerHTML += seconds + 'secs';
+			}
+
+			function time(){
+			var currentdate = new Date(); 
+			var datetime =  currentdate.getDate() + "/"
+                + (currentdate.getMonth()+1)  + "/" 
+                + currentdate.getFullYear() + " @ "  
+                + currentdate.getHours() + ":"  
+                + currentdate.getMinutes() + ":" 
+                + currentdate.getSeconds();
+				
+				document.getElementById("tid").innerHTML=datetime;
+			}
+			function isLeet()
+			{
+				var currentdate = new Date();
+				var Leet="13"+":"+"37"
+				var ifLeet = currentdate.getHours()+":"+currentdate.getMinutes();
+				if(Leet==ifLeet)
+				{
+					document.getElementById("no").innerHTML="Yes";
+					document.title="ITS TIME!"
+					alert("ITS TIME!")
+				}
+				else
+				{
+					document.getElementById("no").innerHTML="No";
+					document.title="ITS NOT TIME!"
+				}
+			}
+			</script>
+	</head>
+	
+	
+	
+	<body onload="isLeet(); tid();showFromLast(); showRemaining(); " bgcolor="rgb(147, 37, 110)">
+		<script>
+			var timer;
+			timer = setInterval(showRemaining, 1000);
+		</script>
+		<script>
+			var timer2;
+			timer2 = setInterval(showFromLast, 1000);
+		</script>
+	
+		
+		
+		
+		<h1 class="center">Is it 1337 yet?</h1>
+		<br>
+		
+		<h2 class="center" id="no"> No<h2>
+		
+		<h2 class="center" id="tid">00/00/0000 @ 00:00:00</h2>
+		<script>
+			setInterval(function() {isLeet()},10000)
+		</script>
+		<script>
+			setInterval(function () {time()},1000);	
+		</script>
+		
+		<div id="Räknare" class="center">
+			<div id="countdown">
+				Time untill next 13:37 : 
+			
+			</div>
+			<div id="countup">
+				Time since last 13:37 : 
+			
+			</div>
+		</div>
+		
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		
+		
+		<div id="ts Link" class="center">Link till Alga-chat Teamspeak <br> <a href=" ts3server://Alga-chat.mooo.com:9987">LINK</div>
+	</body>
 </html>
